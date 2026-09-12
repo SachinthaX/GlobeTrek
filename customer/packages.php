@@ -178,7 +178,7 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Explore Our Travel Packages</h1>
+<h1>Find Your Next Adventure</h1>
 
 <p>
     Search our available travel packages by destination,
@@ -296,6 +296,13 @@ require_once '../includes/header.php';
                     Search
                 </button>
 
+                <a
+                    href="packages.php"
+                    class="button button-secondary"
+                >
+                    Clear Filters
+                </a>
+
             </div>
 
         </div>
@@ -305,11 +312,17 @@ require_once '../includes/header.php';
 </section>
 
 
-<section>
+<section class="section-heading">
 
-    <h2 class="section-heading">
+    <h2>
         Available Packages
     </h2>
+
+    <p>
+        <?= count($packages) ?>
+        package<?= count($packages) === 1 ? '' : 's' ?>
+        matching your search.
+    </p>
 
 
     <?php if (empty($packages)): ?>
@@ -352,14 +365,13 @@ require_once '../includes/header.php';
 
                     <div class="package-card-content">
 
+                        <p class="package-kicker">
+                            <?= htmlspecialchars($package['destination']) ?>
+                        </p>
+
                         <h3>
                             <?= htmlspecialchars($package['title']) ?>
                         </h3>
-
-                        <p>
-                            <strong>Destination:</strong>
-                            <?= htmlspecialchars($package['destination']) ?>
-                        </p>
 
                         <p>
                             <?= htmlspecialchars($package['description']) ?>
@@ -370,6 +382,15 @@ require_once '../includes/header.php';
                             <?= (int) $package['duration_days'] ?>
                             day(s)
                         </p>
+
+                        <?php if (!empty($package['activities'])): ?>
+
+                            <p class="package-activity-preview">
+                                <strong>Activities:</strong>
+                                <?= htmlspecialchars($package['activities']) ?>
+                            </p>
+
+                        <?php endif; ?>
 
                         <p class="package-price">
                             Rs.

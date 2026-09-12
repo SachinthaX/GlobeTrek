@@ -6,15 +6,12 @@
 
     <div class="container">
 
-        <p>
-            &copy;
-            <?= date('Y') ?>
-            GlobeTrek Adventures.
-            All rights reserved.
-        </p>
+        <p class="footer-brand">GlobeTrek Adventures</p>
+
+        <p>Travel better. Explore more. Discover Sri Lanka.</p>
 
         <p>
-            Travel better. Explore more. Discover Sri Lanka.
+            &copy; <?= date('Y') ?> GlobeTrek Adventures. All rights reserved.
         </p>
 
     </div>

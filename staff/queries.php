@@ -256,9 +256,9 @@ require_once '../includes/header.php';
 
                     <p>
                         <strong>Status:</strong>
-                        <?= htmlspecialchars(
-                            ucfirst($query['status'])
-                        ) ?>
+                        <span class="status-badge query-status-<?= htmlspecialchars($query['status']) ?>">
+                            <?= htmlspecialchars(ucfirst($query['status'])) ?>
+                        </span>
                     </p>
 
 

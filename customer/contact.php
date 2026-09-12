@@ -139,9 +139,9 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Contact GlobeTrek Adventures</h1>
+<h1>We are here to help</h1>
 
-<p>
+<p class="page-lead">
     Have a question about a package, booking, transportation,
     accommodation or another travel arrangement?
     Send us a message.

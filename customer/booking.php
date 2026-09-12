@@ -343,27 +343,34 @@ require_once '../includes/header.php';
 
 <?php if ($package): ?>
 
-    <section class="package-details">
+    <section class="package-details checkout-layout">
 
-        <h2>
-            <?= htmlspecialchars($package['title']) ?>
-        </h2>
+        <div class="checkout-intro">
 
-        <p>
-            <strong>Destination:</strong>
-            <?= htmlspecialchars($package['destination']) ?>
-        </p>
+            <p class="eyebrow">Your trip, thoughtfully arranged</p>
 
-        <p>
-            <strong>Duration:</strong>
-            <?= (int) $package['duration_days'] ?>
-            day(s)
-        </p>
+            <h2>
+                <?= htmlspecialchars($package['title']) ?>
+            </h2>
+
+            <p>
+                <strong>Destination:</strong>
+                <?= htmlspecialchars($package['destination']) ?>
+            </p>
+
+            <p>
+                <strong>Duration:</strong>
+                <?= (int) $package['duration_days'] ?>
+                day(s)
+            </p>
+
+        </div>
 
         <p
             data-package-price="<?= htmlspecialchars(
                 $package['price']
             ) ?>"
+            class="checkout-price"
         >
             <strong>Price per traveler:</strong>
             Rs.
@@ -375,13 +382,17 @@ require_once '../includes/header.php';
 
         <p
             id="total_price_preview"
-            class="package-price"
+            class="package-price checkout-total"
             aria-live="polite"
         >
         </p>
 
 
-        <form method="POST" action="booking.php">
+        <div class="checkout-form">
+
+            <h3>Travel information</h3>
+
+            <form method="POST" action="booking.php">
 
             <?= csrfField() ?>
 
@@ -454,7 +465,9 @@ require_once '../includes/header.php';
                 Continue to Payment
             </button>
 
-        </form>
+            </form>
+
+        </div>
 
     </section>
 

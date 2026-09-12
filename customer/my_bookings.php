@@ -129,10 +129,10 @@ require_once '../includes/header.php';
 
     <div class="empty-state">
 
-        <h2>No bookings yet</h2>
+        <h2>No trips booked yet</h2>
 
         <p>
-            You have not made any travel bookings.
+            Your next Sri Lankan adventure is waiting for you.
         </p>
 
         <a

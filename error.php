@@ -57,7 +57,9 @@ require_once __DIR__ . '/includes/header.php';
 
 ?>
 
-<section class="empty-state">
+<section class="empty-state error-state">
+
+    <p class="eyebrow">GlobeTrek Adventures</p>
 
     <h1>
         <?= htmlspecialchars($errorTitle) ?>

@@ -302,7 +302,7 @@ require_once '../includes/header.php';
                 type="submit"
                 class="form-button"
             >
-                Save Profile
+                Save Changes
             </button>
 
         </form>

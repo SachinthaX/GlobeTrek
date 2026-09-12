@@ -13,6 +13,8 @@ require_once __DIR__ . '/includes/header.php';
 
 <section class="hero">
 
+    <p class="eyebrow">Travel deeper. Feel more.</p>
+
     <h1>
         Discover Sri Lanka with GlobeTrek Adventures
     </h1>
@@ -112,7 +114,7 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 
-<section style="margin-top: 50px;">
+<section class="home-cta">
 
     <div class="section-heading">
 

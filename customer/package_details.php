@@ -161,7 +161,7 @@ require_once '../includes/header.php';
 
 <?php elseif ($package): ?>
 
-    <article class="package-details">
+    <article class="package-details package-details-page">
 
         <?php if (!empty($package['image'])): ?>
 
@@ -173,6 +173,10 @@ require_once '../includes/header.php';
 
         <?php endif; ?>
 
+
+        <p class="package-kicker">
+            <?= htmlspecialchars($package['destination']) ?>
+        </p>
 
         <h1>
             <?= htmlspecialchars($package['title']) ?>
@@ -220,9 +224,9 @@ require_once '../includes/header.php';
         </div>
 
 
-        <section>
+        <section class="detail-section">
 
-            <h2>Description</h2>
+            <h2>Overview</h2>
 
             <p>
                 <?= nl2br(htmlspecialchars($package['description'])) ?>
@@ -231,7 +235,7 @@ require_once '../includes/header.php';
         </section>
 
 
-        <section>
+        <section class="detail-section">
 
             <h2>Activities</h2>
 
@@ -273,7 +277,7 @@ require_once '../includes/header.php';
         </section>
 
 
-        <section>
+        <section class="detail-section">
 
             <h2>Accommodation</h2>
 
@@ -322,7 +326,7 @@ require_once '../includes/header.php';
         </section>
 
 
-        <section>
+        <section class="detail-section">
 
             <h2>Transportation</h2>
 
@@ -365,7 +369,7 @@ require_once '../includes/header.php';
         </section>
 
 
-        <section>
+        <section class="detail-section detail-cta">
 
             <h2>Ready to Book?</h2>
 

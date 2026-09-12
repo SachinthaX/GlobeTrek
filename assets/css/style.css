@@ -1139,3 +1139,580 @@ hr {
     }
 
 }
+
+
+/* ============================================================
+   25. GLOBETREK UI/UX V2
+   ============================================================ */
+
+:root {
+    --primary: #0b5964;
+    --primary-dark: #07343d;
+    --secondary: #f2a65a;
+    --secondary-dark: #d97d2b;
+    --accent: #2b8c83;
+    --accent-dark: #216c65;
+    --background: #f4f7f7;
+    --surface: #ffffff;
+    --surface-soft: #eaf2f1;
+    --text: #24343b;
+    --text-light: #64767c;
+    --border: #d8e4e3;
+    --shadow-small: 0 4px 14px rgba(7, 52, 61, 0.07);
+    --shadow-medium: 0 14px 34px rgba(7, 52, 61, 0.12);
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 24px;
+    --content-width: 1200px;
+}
+
+body {
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    background:
+        linear-gradient(180deg, #f7faf9 0%, var(--background) 42%, #eef3f2 100%);
+    color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--primary-dark);
+    letter-spacing: 0;
+}
+
+h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.site-header {
+    background: rgba(7, 52, 61, 0.97);
+    box-shadow: 0 6px 22px rgba(7, 52, 61, 0.16);
+}
+
+.site-header .container {
+    min-height: 78px;
+}
+
+.brand a {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.55rem;
+    letter-spacing: 0;
+}
+
+.main-navigation {
+    gap: 4px;
+}
+
+.main-navigation a {
+    border-radius: 999px;
+    padding: 9px 14px;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus-visible {
+    background: rgba(242, 166, 90, 0.18);
+}
+
+.nav-welcome {
+    padding: 8px 14px;
+    color: #d9e8e7;
+}
+
+.site-main {
+    padding: 56px 0 76px;
+}
+
+.hero {
+    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(42px, 8vw, 88px);
+    border: 0;
+    border-radius: var(--radius-large);
+    background:
+        linear-gradient(90deg, rgba(7, 52, 61, 0.9) 0%, rgba(7, 52, 61, 0.62) 52%, rgba(7, 52, 61, 0.16) 100%),
+        url("/globetrek/assets/images/ella-adventure.jpg") center / cover;
+    box-shadow: var(--shadow-medium);
+}
+
+.hero::after {
+    display: none;
+}
+
+.hero h1,
+.hero p {
+    max-width: 690px;
+    color: #ffffff;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    line-height: 1.05;
+}
+
+.hero p {
+    color: #e7f2f0;
+    font-size: 1.12rem;
+}
+
+.eyebrow,
+.package-kicker {
+    margin-bottom: 9px;
+    color: var(--secondary-dark);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero .eyebrow {
+    color: #ffd29f;
+}
+
+.hero .button {
+    align-self: flex-start;
+    margin-top: 14px;
+}
+
+.section-heading {
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--text-light);
+}
+
+.feature-grid,
+.package-grid,
+.dashboard-grid {
+    gap: 22px;
+}
+
+.feature-card,
+.dashboard-card,
+.package-card,
+.package-details,
+.search-box,
+.empty-state,
+.table-wrapper {
+    border-color: var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+}
+
+.feature-card,
+.dashboard-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before,
+.dashboard-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 4px;
+    background: var(--secondary);
+}
+
+.feature-card h3,
+.dashboard-card h3 {
+    margin-bottom: 10px;
+}
+
+.package-card {
+    border-radius: var(--radius-medium);
+}
+
+.package-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+.package-card-image {
+    height: 220px;
+}
+
+.package-card-content {
+    padding: 24px;
+}
+
+.package-card-content h2,
+.package-card-content h3 {
+    margin-bottom: 10px;
+}
+
+.package-card-content .package-kicker {
+    margin-bottom: 5px;
+}
+
+.package-activity-preview {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.package-card-content p {
+    color: var(--text-light);
+}
+
+.package-card-content > .button {
+    margin-top: auto;
+}
+
+.package-price,
+.dashboard-number {
+    color: var(--secondary-dark);
+}
+
+.search-box {
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.search-box h2 {
+    margin-bottom: 6px;
+}
+
+.search-box .search-grid > div:last-child {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.form-group label {
+    color: var(--primary-dark);
+    font-size: 0.92rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border-color: #c7d7d5;
+    border-radius: 9px;
+    background: #fbfdfc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(43, 140, 131, 0.14);
+}
+
+.button,
+.form-button {
+    border-radius: 9px;
+    box-shadow: 0 4px 10px rgba(11, 89, 100, 0.12);
+}
+
+.button-secondary {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    box-shadow: none;
+}
+
+.button-secondary:hover {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.button-danger {
+    background: #b42318;
+}
+
+.alert {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(7, 52, 61, 0.04);
+}
+
+.package-details {
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.package-details-page > .package-kicker {
+    margin-top: 8px;
+}
+
+.package-details-page > h1 {
+    margin-bottom: 14px;
+}
+
+.detail-section h2 {
+    margin-bottom: 12px;
+}
+
+.detail-cta {
+    padding-bottom: 4px;
+}
+
+.checkout-layout {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.checkout-intro {
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.checkout-intro h2 {
+    margin-bottom: 9px;
+}
+
+.checkout-price {
+    margin: 22px 0 5px;
+    color: var(--text-light);
+}
+
+.checkout-total {
+    margin-bottom: 30px;
+    padding: 18px 20px;
+    border-radius: 10px;
+    background: var(--primary-dark);
+    color: #ffffff;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.checkout-form {
+    padding-top: 8px;
+}
+
+.checkout-form h3 {
+    margin-bottom: 20px;
+}
+
+.notice {
+    padding: 15px 17px;
+    border-left: 4px solid var(--secondary);
+    border-radius: 8px;
+}
+
+.notice-info {
+    background: #fff6e9;
+    color: #6e481f;
+}
+
+.page-lead {
+    max-width: 680px;
+    margin-bottom: 28px;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+.error-state {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.package-details > section {
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.package-details > section:first-of-type {
+    margin-top: 26px;
+}
+
+.package-details-image {
+    max-height: 460px;
+    border-radius: var(--radius-medium);
+}
+
+.package-meta {
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.meta-item {
+    border-radius: 10px;
+    background: var(--surface-soft);
+}
+
+.meta-item strong {
+    color: var(--primary-dark);
+}
+
+.activities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    padding: 0;
+    list-style: none;
+}
+
+.activities-list li {
+    margin: 0;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--primary-dark);
+    font-size: 0.9rem;
+}
+
+.status-badge {
+    padding: 6px 11px;
+    border: 1px solid transparent;
+    letter-spacing: 0.01em;
+}
+
+.status-pending {
+    border-color: #f4d68b;
+}
+
+.status-confirmed,
+.status-active {
+    border-color: #a8dfbd;
+}
+
+.status-cancelled {
+    border-color: #f0b8b8;
+}
+
+.status-inactive {
+    border-color: #cbd5e1;
+}
+
+.query-status-open {
+    background: #fff6e9;
+    border-color: #f4d68b;
+    color: #8a5314;
+}
+
+.query-status-answered {
+    background: #e2f5eb;
+    border-color: #a8dfbd;
+    color: #17623c;
+}
+
+.dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.dashboard-card {
+    min-height: 150px;
+    padding: 26px;
+}
+
+.dashboard-number {
+    font-size: 2.35rem;
+}
+
+.table-wrapper {
+    margin: 20px 0 30px;
+}
+
+.data-table th {
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.empty-state {
+    padding: 56px 30px;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.empty-state p {
+    max-width: 520px;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--text-light);
+}
+
+.site-footer {
+    margin-top: 42px;
+    padding: 42px 0;
+    background: var(--primary-dark);
+}
+
+.site-footer p + p {
+    margin-top: 6px;
+    color: #a8c3c4;
+}
+
+.site-footer .footer-brand {
+    color: #ffffff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.textarea-counter {
+    display: block;
+    margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+
+    .site-main {
+        padding-top: 34px;
+    }
+
+    .hero {
+        min-height: 500px;
+        padding: 34px 24px;
+        background-position: 62% center;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.25rem, 11vw, 3.3rem);
+    }
+
+    .search-box {
+        padding: 21px;
+    }
+
+    .search-box .search-grid > div:last-child {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .package-details {
+        padding: 22px;
+    }
+
+    .checkout-total {
+        padding: 16px;
+    }
+
+    .package-details > section {
+        margin-top: 28px;
+        padding-top: 22px;
+    }
+
+    .data-table {
+        min-width: 760px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .hero {
+        min-height: 460px;
+        padding: 28px 20px;
+    }
+
+    .package-card-content,
+    .dashboard-card {
+        padding: 20px;
+    }
+
+}

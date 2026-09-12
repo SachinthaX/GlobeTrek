@@ -315,7 +315,9 @@ require_once '../includes/header.php';
 
 <?php if ($booking && empty($errors)): ?>
 
-    <section class="package-details">
+    <section class="package-details checkout-layout payment-layout">
+
+        <p class="eyebrow">Final step</p>
 
         <h2>
             <?= htmlspecialchars($booking['title']) ?>
@@ -348,7 +350,7 @@ require_once '../includes/header.php';
 
         <h2>Select Payment Method</h2>
 
-        <p>
+        <p class="notice notice-info">
             This is a simulated payment for coursework purposes.
             No real card or bank information is collected.
         </p>
