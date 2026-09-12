@@ -9,6 +9,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+require_once __DIR__ . '/csrf.php';
+
 ?>
 
 <header class="site-header">
@@ -79,9 +81,22 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php endif; ?>
 
 
-                <a href="/globetrek/logout.php">
-                    Logout
-                </a>
+                <form
+                    method="POST"
+                    action="/globetrek/logout.php"
+                    class="nav-logout-form"
+                >
+
+                    <?= csrfField() ?>
+
+                    <button
+                        type="submit"
+                        class="nav-logout-button"
+                    >
+                        Logout
+                    </button>
+
+                </form>
 
 
             <?php else: ?>

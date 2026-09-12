@@ -244,6 +244,45 @@ a:hover {
         transform 0.2s ease;
 }
 
+.nav-logout-form {
+    display: inline-flex;
+    margin: 0;
+}
+
+.nav-logout-button {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 40px;
+    padding: 8px 13px;
+
+    border: 0;
+    border-radius: var(--radius-small);
+
+    background: none;
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-logout-button:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+.nav-logout-button:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
+}
+
 .main-navigation a:hover {
     color: #ffffff;
 

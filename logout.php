@@ -8,7 +8,15 @@
  * back to the login page.
  */
 
-session_start();
+require_once __DIR__ . '/includes/csrf.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+    header('Location: /globetrek/error.php?code=403');
+    exit;
+}
+
+requireCsrfToken();
 
 /*
  * Remove all session variables.
