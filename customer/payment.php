@@ -7,8 +7,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('customer');
+requireCsrfToken();
 
 $errors = [];
 $booking = null;
@@ -353,6 +355,8 @@ require_once '../includes/header.php';
 
 
         <form method="POST" action="payment.php">
+
+            <?= csrfField() ?>
 
             <input
                 type="hidden"

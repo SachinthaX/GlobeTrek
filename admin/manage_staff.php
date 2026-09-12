@@ -13,8 +13,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('admin');
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -549,6 +551,8 @@ require_once '../includes/header.php';
         action="manage_staff.php"
     >
 
+        <?= csrfField() ?>
+
         <?php if ($editStaff): ?>
 
             <input
@@ -738,6 +742,8 @@ require_once '../includes/header.php';
                             style="display:inline;"
                             data-confirm="Are you sure you want to delete this staff account?"
                         >
+
+                            <?= csrfField() ?>
 
                             <input
                                 type="hidden"

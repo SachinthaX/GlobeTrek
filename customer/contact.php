@@ -6,8 +6,9 @@
  */
 
 require_once '../config/db.php';
+require_once '../includes/csrf.php';
 
-session_start();
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -187,6 +188,8 @@ require_once '../includes/header.php';
         method="POST"
         action="contact.php"
     >
+
+        <?= csrfField() ?>
 
         <div class="form-group">
 

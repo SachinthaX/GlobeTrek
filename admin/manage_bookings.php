@@ -10,8 +10,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('admin');
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -328,6 +330,8 @@ require_once '../includes/header.php';
                         method="POST"
                         action="manage_bookings.php"
                     >
+
+                        <?= csrfField() ?>
 
                         <input
                             type="hidden"

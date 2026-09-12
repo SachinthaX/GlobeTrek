@@ -7,8 +7,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('customer');
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -237,6 +239,8 @@ require_once '../includes/header.php';
     <section class="package-details">
 
         <form method="POST" action="profile.php">
+
+            <?= csrfField() ?>
 
             <div class="form-group">
 

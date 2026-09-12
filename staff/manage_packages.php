@@ -15,8 +15,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('staff');
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -717,6 +719,8 @@ require_once '../includes/header.php';
 
     <form method="POST" action="manage_packages.php">
 
+        <?= csrfField() ?>
+
         <?php if ($editPackage): ?>
 
             <input
@@ -1163,6 +1167,8 @@ require_once '../includes/header.php';
                             style="display:inline;"
                             data-confirm="Are you sure you want to delete this package?"
                         >
+
+                            <?= csrfField() ?>
 
                             <input
                                 type="hidden"

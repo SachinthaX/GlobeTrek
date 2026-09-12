@@ -7,8 +7,10 @@
 
 require_once '../config/db.php';
 require_once '../includes/auth_check.php';
+require_once '../includes/csrf.php';
 
 requireRole('staff');
+requireCsrfToken();
 
 $errors = [];
 $successMessage = '';
@@ -297,6 +299,8 @@ require_once '../includes/header.php';
                         method="POST"
                         action="queries.php"
                     >
+
+                        <?= csrfField() ?>
 
                         <input
                             type="hidden"
