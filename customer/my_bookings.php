@@ -80,6 +80,29 @@ try {
     $errors[] = 'Your bookings could not be loaded. Please try again later.';
 }
 
+$totalTrips = count($bookings);
+$upcomingTrips = 0;
+$confirmedTrips = 0;
+$pendingTrips = 0;
+
+foreach ($bookings as $bookingSummary) {
+
+    if (
+        $bookingSummary['travel_date'] >= date('Y-m-d')
+        && $bookingSummary['status'] !== 'cancelled'
+    ) {
+        $upcomingTrips++;
+    }
+
+    if ($bookingSummary['status'] === 'confirmed') {
+        $confirmedTrips++;
+    }
+
+    if ($bookingSummary['status'] === 'pending') {
+        $pendingTrips++;
+    }
+}
+
 
 $pageTitle = 'My Bookings - GlobeTrek Adventures';
 
@@ -88,7 +111,17 @@ require_once '../includes/header.php';
 ?>
 
 
-<h1>My Bookings</h1>
+<header class="bookings-intro">
+
+    <p class="eyebrow">My Trips</p>
+
+    <h1>My Bookings</h1>
+
+    <p>
+        Keep track of your adventures, payments, and travel plans.
+    </p>
+
+</header>
 
 
 <?php if ($successMessage !== ''): ?>
@@ -125,6 +158,38 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
+<?php if (!empty($bookings)): ?>
+
+    <section
+        class="booking-summary"
+        aria-label="Booking summary"
+    >
+
+        <article class="booking-summary-card">
+            <span>Total Trips</span>
+            <strong><?= $totalTrips ?></strong>
+        </article>
+
+        <article class="booking-summary-card">
+            <span>Upcoming</span>
+            <strong><?= $upcomingTrips ?></strong>
+        </article>
+
+        <article class="booking-summary-card">
+            <span>Confirmed</span>
+            <strong><?= $confirmedTrips ?></strong>
+        </article>
+
+        <article class="booking-summary-card">
+            <span>Pending</span>
+            <strong><?= $pendingTrips ?></strong>
+        </article>
+
+    </section>
+
+<?php endif; ?>
+
+
 <?php if (empty($bookings)): ?>
 
     <div class="empty-state">
@@ -146,7 +211,7 @@ require_once '../includes/header.php';
 
 <?php else: ?>
 
-    <div class="package-grid">
+    <div class="booking-list">
 
         <?php foreach ($bookings as $booking): ?>
 
@@ -160,113 +225,172 @@ require_once '../includes/header.php';
                 : 'pending';
             ?>
 
-            <article class="package-card">
+            <?php
+            $travelDateObject = DateTime::createFromFormat(
+                'Y-m-d',
+                $booking['travel_date']
+            );
 
-                <div class="package-card-content">
+            $paymentStatus = $booking['payment_status'] ?? '';
+            $paymentStatusClass = in_array(
+                $paymentStatus,
+                ['completed', 'pending', 'cancelled'],
+                true
+            )
+                ? $paymentStatus
+                : 'inactive';
+            ?>
 
-                    <h2>
-                        <?= htmlspecialchars($booking['title']) ?>
-                    </h2>
+            <article class="booking-card">
 
-                    <p>
-                        <strong>Destination:</strong>
-                        <?= htmlspecialchars($booking['destination']) ?>
-                    </p>
+                <div class="booking-card-header">
 
-                    <p>
-                        <strong>Travel Date:</strong>
-                        <?= htmlspecialchars($booking['travel_date']) ?>
-                    </p>
+                    <div>
 
-                    <p>
-                        <strong>Travelers:</strong>
-                        <?= (int) $booking['num_travelers'] ?>
-                    </p>
+                        <p class="booking-kicker">
+                            <?= htmlspecialchars($booking['destination']) ?>
+                        </p>
 
-                    <p>
-                        <strong>Total Price:</strong>
-                        Rs.
-                        <?= number_format(
-                            (float) $booking['total_price'],
-                            2
-                        ) ?>
-                    </p>
+                        <h2>
+                            <?= htmlspecialchars($booking['title']) ?>
+                        </h2>
 
-                    <p>
+                    </div>
 
-                        <strong>Booking Status:</strong>
+                    <span class="booking-id">
+                        Booking #<?= (int) $booking['id'] ?>
+                    </span>
 
-                        <span
-                            class="status-badge status-<?= htmlspecialchars($bookingStatus) ?>"
-                        >
-                            <?= htmlspecialchars(ucfirst($bookingStatus)) ?>
+                </div>
+
+                <div class="booking-card-body">
+
+                    <div class="booking-date-panel">
+
+                        <span class="booking-date-day">
+                            <?= $travelDateObject
+                                ? $travelDateObject->format('d')
+                                : htmlspecialchars($booking['travel_date']) ?>
                         </span>
 
-                    </p>
+                        <?php if ($travelDateObject): ?>
 
+                            <span>
+                                <?= htmlspecialchars(
+                                    strtoupper($travelDateObject->format('M'))
+                                ) ?>
+                            </span>
 
-                    <?php if ($booking['payment_status']): ?>
+                            <span>
+                                <?= $travelDateObject->format('Y') ?>
+                            </span>
 
-                        <p>
-                            <strong>Payment Status:</strong>
-                            <?= htmlspecialchars(
-                                ucfirst($booking['payment_status'])
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div class="booking-details-grid">
+
+                        <div class="booking-detail">
+                            <span>Travel date</span>
+                            <strong><?= htmlspecialchars($booking['travel_date']) ?></strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>Travelers</span>
+                            <strong><?= (int) $booking['num_travelers'] ?></strong>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>Booking status</span>
+                            <span class="status-badge status-<?= htmlspecialchars($bookingStatus) ?>">
+                                <?= htmlspecialchars(ucfirst($bookingStatus)) ?>
+                            </span>
+                        </div>
+
+                        <div class="booking-detail">
+                            <span>Payment</span>
+
+                            <?php if ($paymentStatus !== ''): ?>
+
+                                <span class="status-badge status-<?= htmlspecialchars($paymentStatusClass) ?>">
+                                    <?= htmlspecialchars(ucfirst($paymentStatus)) ?>
+                                </span>
+
+                            <?php else: ?>
+
+                                <span class="status-badge status-inactive">
+                                    Not submitted
+                                </span>
+
+                            <?php endif; ?>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="booking-card-footer">
+
+                    <div>
+
+                        <?php if ($booking['payment_method']): ?>
+
+                            <p class="booking-payment-method">
+                                Payment method:
+                                <strong>
+                                    <?= htmlspecialchars(
+                                        str_replace(
+                                            '_',
+                                            ' ',
+                                            ucwords($booking['payment_method'])
+                                        )
+                                    ) ?>
+                                </strong>
+                            </p>
+
+                        <?php endif; ?>
+
+                        <?php if (!empty($booking['customization_notes'])): ?>
+
+                            <div class="booking-notes">
+                                <strong>Trip Notes</strong>
+                                <p>
+                                    <?= nl2br(
+                                        htmlspecialchars(
+                                            $booking['customization_notes']
+                                        )
+                                    ) ?>
+                                </p>
+                            </div>
+
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div class="booking-total">
+                        <span>Total price</span>
+                        <strong>
+                            Rs.
+                            <?= number_format(
+                                (float) $booking['total_price'],
+                                2
                             ) ?>
-                        </p>
+                        </strong>
 
-                    <?php else: ?>
+                        <?php if ($booking['status'] === 'pending'): ?>
 
-                        <p>
-                            <strong>Payment Status:</strong>
-                            Not submitted
-                        </p>
+                            <a
+                                href="payment.php?booking_id=<?= (int) $booking['id'] ?>"
+                                class="button"
+                            >
+                                Complete Payment
+                            </a>
 
-                    <?php endif; ?>
+                        <?php endif; ?>
 
-
-                    <?php if ($booking['payment_method']): ?>
-
-                        <p>
-                            <strong>Payment Method:</strong>
-                            <?= htmlspecialchars(
-                                str_replace(
-                                    '_',
-                                    ' ',
-                                    ucwords($booking['payment_method'])
-                                )
-                            ) ?>
-                        </p>
-
-                    <?php endif; ?>
-
-
-                    <?php if (!empty($booking['customization_notes'])): ?>
-
-                        <p>
-                            <strong>Customization Notes:</strong>
-                        </p>
-
-                        <p>
-                            <?= nl2br(
-                                htmlspecialchars(
-                                    $booking['customization_notes']
-                                )
-                            ) ?>
-                        </p>
-
-                    <?php endif; ?>
-
-
-                    <?php if ($booking['status'] === 'pending'): ?>
-
-                        <a
-                            href="payment.php?booking_id=<?= (int) $booking['id'] ?>"
-                            class="button"
-                        >
-                            Complete Payment
-                        </a>
-
-                    <?php endif; ?>
+                    </div>
 
                 </div>
 
