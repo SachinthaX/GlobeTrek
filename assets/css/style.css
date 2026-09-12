@@ -1299,7 +1299,6 @@ h2 {
 }
 
 .hero p {
-    color: #e7f2f0;
     font-size: 1.12rem;
 }
 
@@ -2363,6 +2362,241 @@ h2 {
     .management-grid .package-card-content > form,
     .support-grid .package-card-content .form-button {
         width: 100%;
+    }
+
+}
+
+
+/* ============================================================
+   29. CUSTOMER DISCOVERY
+   ============================================================ */
+
+.hero .hero-secondary-action {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+}
+
+.hero .hero-secondary-action:hover,
+.hero .hero-secondary-action:focus-visible {
+    border-color: var(--secondary);
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+.package-search-panel {
+    margin-top: 32px;
+}
+
+.package-search-panel h2 {
+    font-size: 1.45rem;
+}
+
+.package-results {
+    margin-top: 42px;
+}
+
+.package-results > .package-grid {
+    margin-top: 24px;
+}
+
+.package-results > .empty-state {
+    margin-top: 24px;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(230px, 0.8fr) minmax(0, 1.35fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.contact-support-card,
+.contact-form-card {
+    min-width: 0;
+}
+
+.contact-support-card {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: linear-gradient(150deg, rgba(7, 52, 61, 0.98), rgba(11, 89, 100, 0.94));
+    box-shadow: var(--shadow-small);
+    color: #e7f2f0;
+}
+
+.contact-support-card::after {
+    content: "";
+    position: absolute;
+    right: -58px;
+    bottom: -68px;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(242, 166, 90, 0.3);
+    border-radius: 50%;
+}
+
+.contact-support-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-support-card .eyebrow {
+    color: #ffd29f;
+}
+
+.contact-support-card h2 {
+    color: #ffffff;
+}
+
+.contact-support-card p:not(.eyebrow) {
+    color: #d6e8e7;
+}
+
+.contact-support-card .button-secondary {
+    margin-top: 12px;
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+}
+
+.contact-support-card .button-secondary:hover,
+.contact-support-card .button-secondary:focus-visible {
+    border-color: var(--secondary);
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+.contact-form-card {
+    margin: 0;
+}
+
+.contact-form-card form {
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+
+    .hero .hero-secondary-action {
+        margin-top: 12px;
+        margin-left: 0;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .contact-support-card,
+    .contact-form-card {
+        padding: 22px;
+    }
+
+}
+
+
+/* ============================================================
+   30. PACKAGE CARD POLISH
+   ============================================================ */
+
+.package-travel-card {
+    min-height: 100%;
+}
+
+.package-card-media {
+    position: relative;
+    overflow: hidden;
+    height: 224px;
+    background: var(--surface-soft);
+}
+
+.package-card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 58%, rgba(7, 52, 61, 0.16));
+    pointer-events: none;
+}
+
+.package-travel-card .package-card-image {
+    height: 100%;
+    transition: transform 0.35s ease;
+}
+
+.package-travel-card:hover .package-card-image {
+    transform: scale(1.03);
+}
+
+.package-travel-card .package-card-content {
+    display: flex;
+    min-height: 330px;
+}
+
+.package-travel-card .package-card-content h3 {
+    min-height: 2.5em;
+}
+
+.package-card-duration {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-bottom: 12px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: var(--surface-soft);
+    color: var(--primary-dark) !important;
+    font-size: 0.86rem;
+}
+
+.package-card-duration strong {
+    margin-right: 4px;
+}
+
+.package-card-price {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: auto;
+    margin-bottom: 18px;
+}
+
+.package-card-price span {
+    color: var(--text-light);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.package-card-price strong {
+    color: var(--secondary-dark);
+    font-size: 1.45rem;
+    line-height: 1.1;
+}
+
+.package-card-cta {
+    width: 100%;
+}
+
+.package-results > .empty-state {
+    border-style: solid;
+    background: var(--surface);
+}
+
+@media (max-width: 700px) {
+
+    .package-card-media {
+        height: 210px;
+    }
+
+    .package-travel-card .package-card-content {
+        min-height: 0;
     }
 
 }

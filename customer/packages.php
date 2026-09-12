@@ -180,9 +180,9 @@ require_once '../includes/header.php';
 
 <header class="page-header">
 
-    <p class="eyebrow">Explore Sri Lanka</p>
+    <p class="eyebrow">Explore</p>
 
-    <h1>Find Your Next Adventure</h1>
+    <h1>Travel Packages</h1>
 
     <p>
         Search our available travel packages by destination,
@@ -213,7 +213,7 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
-<section class="search-box">
+<section class="search-box package-search-panel">
 
     <h2>Search Packages</h2>
 
@@ -318,7 +318,7 @@ require_once '../includes/header.php';
 </section>
 
 
-<section class="section-heading">
+<section class="section-heading package-results">
 
     <h2>
         Available Packages
@@ -356,17 +356,21 @@ require_once '../includes/header.php';
 
             <?php foreach ($packages as $package): ?>
 
-                <article class="package-card">
+                <article class="package-card package-travel-card">
 
-                    <?php if (!empty($package['image'])): ?>
+                    <div class="package-card-media">
 
-                        <img
-                            src="/globetrek/assets/images/<?= htmlspecialchars($package['image']) ?>"
-                            alt="<?= htmlspecialchars($package['title']) ?>"
-                            class="package-card-image"
-                        >
+                        <?php if (!empty($package['image'])): ?>
 
-                    <?php endif; ?>
+                            <img
+                                src="/globetrek/assets/images/<?= htmlspecialchars($package['image']) ?>"
+                                alt="<?= htmlspecialchars($package['title']) ?>"
+                                class="package-card-image"
+                            >
+
+                        <?php endif; ?>
+
+                    </div>
 
 
                     <div class="package-card-content">
@@ -383,7 +387,7 @@ require_once '../includes/header.php';
                             <?= htmlspecialchars($package['description']) ?>
                         </p>
 
-                        <p>
+                        <p class="package-card-duration">
                             <strong>Duration:</strong>
                             <?= (int) $package['duration_days'] ?>
                             day(s)
@@ -398,14 +402,17 @@ require_once '../includes/header.php';
 
                         <?php endif; ?>
 
-                        <p class="package-price">
-                            Rs.
-                            <?= number_format((float) $package['price'], 2) ?>
+                        <p class="package-price package-card-price">
+                            <span>From</span>
+                            <strong>
+                                Rs.
+                                <?= number_format((float) $package['price'], 2) ?>
+                            </strong>
                         </p>
 
                         <a
                             href="package_details.php?id=<?= (int) $package['id'] ?>"
-                            class="button"
+                            class="button package-card-cta"
                         >
                             View Details
                         </a>

@@ -144,13 +144,6 @@ require_once '../includes/header.php';
     <h1>We are here to help</h1>
 </header>
 
-<p class="page-lead">
-    Have a question about a package, booking, transportation,
-    accommodation or another travel arrangement?
-    Send us a message.
-</p>
-
-
 <?php if ($successMessage !== ''): ?>
 
     <div class="alert alert-success">
@@ -185,7 +178,30 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
-<section class="package-details">
+<div class="contact-layout">
+
+    <aside class="contact-support-card">
+
+        <p class="eyebrow">Travel support</p>
+
+        <h2>Plan with confidence</h2>
+
+        <p>
+            Have a question about a package, booking, transportation,
+            accommodation or another travel arrangement? Our travel
+            management team is here to help.
+        </p>
+
+        <a
+            href="packages.php"
+            class="button button-secondary"
+        >
+            Browse Packages
+        </a>
+
+    </aside>
+
+    <section class="package-details contact-form-card">
 
     <form
         method="POST"
@@ -239,6 +255,8 @@ require_once '../includes/header.php';
     </form>
 
 </section>
+
+</div>
 
 
 <?php

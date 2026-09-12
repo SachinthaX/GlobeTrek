@@ -32,6 +32,13 @@ require_once __DIR__ . '/includes/header.php';
         Explore Travel Packages
     </a>
 
+    <a
+        href="/globetrek/customer/contact.php"
+        class="button button-secondary hero-secondary-action"
+    >
+        Talk to Our Team
+    </a>
+
 </section>
 
 
@@ -39,8 +46,10 @@ require_once __DIR__ . '/includes/header.php';
 
     <div class="section-heading">
 
+        <p class="eyebrow">The GlobeTrek way</p>
+
         <h2>
-            Your Journey Starts Here
+            Travel with more intention
         </h2>
 
         <p>
