@@ -231,6 +231,11 @@ require_once '../includes/header.php';
                 $booking['travel_date']
             );
 
+            $createdDateObject = DateTime::createFromFormat(
+                'Y-m-d H:i:s',
+                $booking['created_at']
+            );
+
             $paymentStatus = $booking['payment_status'] ?? '';
             $paymentStatusClass = in_array(
                 $paymentStatus,
@@ -292,8 +297,12 @@ require_once '../includes/header.php';
                     <div class="booking-details-grid">
 
                         <div class="booking-detail">
-                            <span>Travel date</span>
-                            <strong><?= htmlspecialchars($booking['travel_date']) ?></strong>
+                            <span>Booked on</span>
+                            <strong>
+                                <?= $createdDateObject
+                                    ? $createdDateObject->format('d M Y')
+                                    : htmlspecialchars($booking['created_at']) ?>
+                            </strong>
                         </div>
 
                         <div class="booking-detail">
