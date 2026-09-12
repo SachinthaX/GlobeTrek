@@ -1758,6 +1758,177 @@ h2 {
 
 
 /* ============================================================
+   28. CUSTOMER PROFILE
+   ============================================================ */
+
+.profile-page-header {
+    max-width: 760px;
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.4fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.profile-summary,
+.profile-form {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+}
+
+.profile-summary {
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+    padding: 30px;
+    background:
+        linear-gradient(160deg, rgba(7, 52, 61, 0.98), rgba(11, 89, 100, 0.94));
+    color: #ffffff;
+}
+
+.profile-summary::after {
+    content: "";
+    position: absolute;
+    right: -42px;
+    bottom: -52px;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(242, 166, 90, 0.34);
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    display: grid;
+    place-items: center;
+    width: 82px;
+    height: 82px;
+    margin-bottom: 28px;
+    border: 3px solid rgba(255, 255, 255, 0.28);
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--primary-dark);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profile-info {
+    position: relative;
+    z-index: 1;
+}
+
+.profile-info .eyebrow {
+    color: #ffd29f;
+}
+
+.profile-info h2 {
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    overflow-wrap: anywhere;
+}
+
+.profile-email {
+    margin-bottom: 0;
+    color: #d6e8e7;
+    overflow-wrap: anywhere;
+}
+
+.profile-account-note {
+    position: absolute;
+    right: 30px;
+    bottom: 28px;
+    left: 30px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-account-note span {
+    color: #a9ccca;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.profile-account-note strong {
+    color: #ffffff;
+}
+
+.profile-form {
+    margin: 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.profile-section-heading {
+    margin-bottom: 26px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-section-heading .eyebrow {
+    margin-bottom: 6px;
+}
+
+.profile-section-heading h2 {
+    margin-bottom: 7px;
+}
+
+.profile-section-heading p:last-child {
+    margin-bottom: 0;
+    color: var(--text-light);
+}
+
+.profile-form .form-group {
+    margin-bottom: 22px;
+}
+
+.profile-form .form-group input {
+    min-height: 48px;
+}
+
+.profile-form .form-button {
+    min-width: 150px;
+    margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-summary {
+        min-height: 300px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .profile-summary,
+    .profile-form {
+        padding: 22px;
+    }
+
+    .profile-account-note {
+        right: 22px;
+        bottom: 22px;
+        left: 22px;
+    }
+
+}
+
+
+/* ============================================================
    26. CUSTOMER BOOKINGS
    ============================================================ */
 

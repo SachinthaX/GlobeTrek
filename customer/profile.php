@@ -190,6 +190,22 @@ if (
     }
 }
 
+$profileInitials = '';
+
+if ($profile) {
+
+    $nameParts = preg_split(
+        '/\s+/',
+        trim($fullName),
+        -1,
+        PREG_SPLIT_NO_EMPTY
+    );
+
+    foreach (array_slice($nameParts, 0, 2) as $namePart) {
+        $profileInitials .= strtoupper(substr($namePart, 0, 1));
+    }
+}
+
 
 $pageTitle = 'My Profile - GlobeTrek Adventures';
 
@@ -197,9 +213,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<header class="page-header">
-    <p class="eyebrow">Account settings</p>
-    <h1>My Profile</h1>
+<header class="page-header profile-page-header">
+    <p class="eyebrow">My account</p>
+    <h1>Profile</h1>
+    <p>Manage your personal information and account details.</p>
 </header>
 
 
@@ -239,9 +256,44 @@ require_once '../includes/header.php';
 
 <?php if ($profile): ?>
 
-    <section class="package-details">
+    <div class="profile-layout">
 
-        <form method="POST" action="profile.php">
+        <aside class="profile-summary">
+
+            <div class="profile-avatar" aria-hidden="true">
+                <?= htmlspecialchars($profileInitials) ?>
+            </div>
+
+            <div class="profile-info">
+
+                <p class="eyebrow">GlobeTrek traveller</p>
+
+                <h2>
+                    <?= htmlspecialchars($fullName) ?>
+                </h2>
+
+                <p class="profile-email">
+                    <?= htmlspecialchars($email) ?>
+                </p>
+
+            </div>
+
+            <div class="profile-account-note">
+                <span>Account</span>
+                <strong>Customer account</strong>
+            </div>
+
+        </aside>
+
+        <section class="package-details profile-form profile-section">
+
+            <div class="profile-section-heading">
+                <p class="eyebrow">Your details</p>
+                <h2>Personal Information</h2>
+                <p>Keep your contact details up to date for smoother travel planning.</p>
+            </div>
+
+            <form method="POST" action="profile.php">
 
             <?= csrfField() ?>
 
@@ -308,9 +360,11 @@ require_once '../includes/header.php';
                 Save Changes
             </button>
 
-        </form>
+            </form>
 
-    </section>
+        </section>
+
+    </div>
 
 <?php endif; ?>
 
