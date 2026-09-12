@@ -35,7 +35,7 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 
-<section>
+<section class="content-section">
 
     <div class="section-heading">
 
@@ -114,7 +114,7 @@ require_once __DIR__ . '/includes/header.php';
 </section>
 
 
-<section class="home-cta">
+<section class="home-cta content-section">
 
     <div class="section-heading">
 

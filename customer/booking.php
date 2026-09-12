@@ -315,7 +315,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Book Your Travel Package</h1>
+<header class="page-header">
+    <p class="eyebrow">Plan your journey</p>
+    <h1>Book Your Travel Package</h1>
+</header>
 
 
 <?php if (!empty($errors)): ?>

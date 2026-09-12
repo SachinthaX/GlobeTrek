@@ -268,7 +268,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Sales and Customer Reports</h1>
+<header class="page-header workspace-header">
+    <p class="eyebrow">Decision support</p>
+    <h1>Sales and Customer Reports</h1>
+</header>
 
 
 <?php if (!empty($errors)): ?>
@@ -298,7 +301,7 @@ require_once '../includes/header.php';
 
     <h2>Revenue Summary</h2>
 
-    <div class="package-grid">
+    <div class="dashboard-grid report-summary-grid">
 
         <article class="package-card">
 

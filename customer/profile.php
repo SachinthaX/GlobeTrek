@@ -197,7 +197,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>My Profile</h1>
+<header class="page-header">
+    <p class="eyebrow">Account settings</p>
+    <h1>My Profile</h1>
+</header>
 
 
 <?php if ($successMessage !== ''): ?>

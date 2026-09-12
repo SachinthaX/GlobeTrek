@@ -133,7 +133,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Administrator Dashboard</h1>
+<header class="page-header workspace-header">
+    <p class="eyebrow">Management console</p>
+    <h1>Administrator Dashboard</h1>
+</header>
 
 <p>
     Welcome,
@@ -164,7 +167,7 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
-<section>
+<section class="content-section">
 
     <h2>System Overview</h2>
 
@@ -230,7 +233,7 @@ require_once '../includes/header.php';
 </section>
 
 
-<section>
+<section class="content-section">
 
     <h2>Administrative Functions</h2>
 

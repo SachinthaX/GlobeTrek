@@ -161,7 +161,7 @@ require_once '../includes/header.php';
 
 <?php elseif ($package): ?>
 
-    <article class="package-details package-details-page">
+    <article class="package-details package-details-page content-section">
 
         <?php if (!empty($package['image'])): ?>
 

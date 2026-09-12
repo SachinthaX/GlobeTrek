@@ -99,7 +99,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Staff Dashboard</h1>
+<header class="page-header workspace-header">
+    <p class="eyebrow">Operations workspace</p>
+    <h1>Staff Dashboard</h1>
+</header>
 
 <p>
     Welcome,
@@ -126,7 +129,7 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
-<section>
+<section class="content-section">
 
     <h2>System Overview</h2>
 
@@ -180,7 +183,7 @@ require_once '../includes/header.php';
 </section>
 
 
-<section>
+<section class="content-section">
 
     <h2>Staff Actions</h2>
 

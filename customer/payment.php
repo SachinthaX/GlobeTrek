@@ -287,7 +287,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Payment</h1>
+<header class="page-header">
+    <p class="eyebrow">Secure checkout</p>
+    <h1>Payment</h1>
+</header>
 
 
 <?php if (!empty($errors)): ?>

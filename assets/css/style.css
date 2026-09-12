@@ -2032,3 +2032,166 @@ h2 {
     }
 
 }
+
+
+/* ============================================================
+   27. PLATFORM POLISH
+   ============================================================ */
+
+.content-section {
+    margin-top: 42px;
+}
+
+.page-header {
+    max-width: 760px;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin-bottom: 10px;
+}
+
+.page-header > p:last-child {
+    margin-bottom: 0;
+    color: var(--text-light);
+    font-size: 1.05rem;
+}
+
+.workspace-header {
+    max-width: none;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--border);
+}
+
+.home-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 30px 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-medium);
+    background: var(--surface-soft);
+}
+
+.home-cta .section-heading {
+    margin-bottom: 0;
+}
+
+.home-cta .button {
+    flex: 0 0 auto;
+}
+
+.form-section {
+    max-width: 920px;
+}
+
+.form-section form h3 {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.form-section form h3 + p {
+    color: var(--text-light);
+}
+
+.management-grid,
+.support-grid {
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+}
+
+.management-grid .package-card,
+.support-grid .package-card {
+    min-width: 0;
+}
+
+.management-grid .package-card-content,
+.support-grid .package-card-content {
+    gap: 2px;
+}
+
+.management-grid .package-card-content form,
+.support-grid .package-card-content form {
+    margin-top: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+
+.management-grid .package-card-content .form-button,
+.support-grid .package-card-content .form-button {
+    min-width: 150px;
+}
+
+.management-grid .package-card-content > .button + form {
+    display: inline-flex;
+    margin-left: 8px;
+    padding-top: 0;
+    border-top: 0;
+}
+
+.support-grid .package-card-content h3 {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.report-summary-grid .dashboard-card {
+    min-height: 138px;
+}
+
+.report-summary-grid .dashboard-card:first-child .dashboard-number {
+    color: var(--secondary-dark);
+}
+
+.package-details form > .form-group:last-of-type {
+    margin-bottom: 26px;
+}
+
+.data-table a.button,
+.data-table .form-button {
+    min-height: 38px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.alert-error h2,
+.alert-success h2,
+.alert-warning h2 {
+    font-size: 1.15rem;
+}
+
+@media (max-width: 700px) {
+
+    .content-section {
+        margin-top: 32px;
+    }
+
+    .home-cta {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .home-cta .button {
+        align-self: flex-start;
+    }
+
+    .management-grid,
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .management-grid .package-card-content > .button + form {
+        display: flex;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .management-grid .package-card-content > .button,
+    .management-grid .package-card-content > form,
+    .support-grid .package-card-content .form-button {
+        width: 100%;
+    }
+
+}

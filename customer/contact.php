@@ -139,7 +139,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>We are here to help</h1>
+<header class="page-header">
+    <p class="eyebrow">Customer support</p>
+    <h1>We are here to help</h1>
+</header>
 
 <p class="page-lead">
     Have a question about a package, booking, transportation,

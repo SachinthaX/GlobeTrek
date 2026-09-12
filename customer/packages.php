@@ -178,12 +178,18 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Find Your Next Adventure</h1>
+<header class="page-header">
 
-<p>
-    Search our available travel packages by destination,
-    price range or activity.
-</p>
+    <p class="eyebrow">Explore Sri Lanka</p>
+
+    <h1>Find Your Next Adventure</h1>
+
+    <p>
+        Search our available travel packages by destination,
+        price range or activity.
+    </p>
+
+</header>
 
 
 <?php if (!empty($errors)): ?>

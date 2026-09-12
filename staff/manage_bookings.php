@@ -163,7 +163,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Manage Customer Bookings</h1>
+<header class="page-header workspace-header">
+    <p class="eyebrow">Staff operations</p>
+    <h1>Manage Customer Bookings</h1>
+</header>
 
 
 <?php if ($successMessage !== ''): ?>
@@ -210,7 +213,7 @@ require_once '../includes/header.php';
 
 <?php else: ?>
 
-    <div class="package-grid">
+    <div class="package-grid management-grid">
 
         <?php foreach ($bookings as $booking): ?>
 

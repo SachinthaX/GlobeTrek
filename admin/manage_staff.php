@@ -504,7 +504,10 @@ require_once '../includes/header.php';
 
 ?>
 
-<h1>Manage Staff Accounts</h1>
+<header class="page-header workspace-header">
+    <p class="eyebrow">Administration</p>
+    <h1>Manage Staff Accounts</h1>
+</header>
 
 
 <?php if ($successMessage !== ''): ?>
@@ -537,7 +540,7 @@ require_once '../includes/header.php';
 <?php endif; ?>
 
 
-<section class="package-details">
+<section class="package-details form-section">
 
     <h2>
         <?= $editStaff
@@ -675,7 +678,7 @@ require_once '../includes/header.php';
 </section>
 
 
-<section>
+<section class="content-section">
 
     <h2>Existing Staff Accounts</h2>
 
