@@ -1,0 +1,30 @@
+# ============================================================
+# GlobeTrek Adventures - Git Ignore
+# ============================================================
+
+# Local database/environment configuration
+config/db.php
+
+# Local environment files
+.env
+.env.local
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor settings
+.vscode/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# PHP/server generated files
+php_errors.log
+
+# Backups
+*.bak
+*.backup

@@ -1,0 +1,1141 @@
+/*
+ * ============================================================
+ * GlobeTrek Adventures
+ * Final Global Stylesheet
+ * ============================================================
+ *
+ * This stylesheet provides the shared visual design for the
+ * entire GlobeTrek Adventures website.
+ *
+ * It demonstrates:
+ * - CSS variables
+ * - Flexbox
+ * - CSS Grid
+ * - Responsive media queries
+ * - Pseudo-classes
+ * - Form styling
+ * - Cards
+ * - Tables
+ * - Alerts
+ * - Navigation
+ * - Dashboard components
+ */
+
+
+/* ============================================================
+   1. CSS VARIABLES
+   ============================================================ */
+
+:root {
+    --primary: #0f4c5c;
+    --primary-dark: #083642;
+    --secondary: #f4a261;
+    --secondary-dark: #e07a2f;
+
+    --accent: #2a9d8f;
+    --accent-dark: #217d72;
+
+    --background: #f6f8fb;
+    --surface: #ffffff;
+    --surface-soft: #eef5f6;
+
+    --text: #1f2937;
+    --text-light: #64748b;
+    --border: #dbe3ea;
+
+    --success: #166534;
+    --success-background: #dcfce7;
+
+    --error: #991b1b;
+    --error-background: #fee2e2;
+
+    --warning: #92400e;
+    --warning-background: #fef3c7;
+
+    --shadow-small: 0 2px 8px rgba(15, 76, 92, 0.08);
+    --shadow-medium: 0 8px 24px rgba(15, 76, 92, 0.12);
+
+    --radius-small: 6px;
+    --radius-medium: 12px;
+    --radius-large: 18px;
+
+    --content-width: 1160px;
+}
+
+
+/* ============================================================
+   2. RESET / BASE
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    background: var(--background);
+    color: var(--text);
+}
+
+
+/* Prevent images from overflowing their containers. */
+
+img {
+    max-width: 100%;
+}
+
+
+/* Make form elements use the same font as the website. */
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--primary-dark);
+    line-height: 1.25;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+    margin-top: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+
+/* ============================================================
+   4. GLOBAL CONTAINER
+   ============================================================ */
+
+.container {
+    width: min(var(--content-width), 92%);
+    margin: 0 auto;
+}
+
+
+/* ============================================================
+   5. HEADER / NAVIGATION
+   ============================================================ */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.12);
+}
+
+.site-header .container {
+    min-height: 74px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* Brand */
+
+.brand a {
+    display: inline-block;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.brand a:hover {
+    color: #ffffff;
+}
+
+
+/* Main navigation */
+
+.main-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.main-navigation a {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 40px;
+    padding: 8px 13px;
+
+    border-radius: var(--radius-small);
+
+    color: #ffffff;
+    text-decoration: none;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.main-navigation a:hover {
+    color: #ffffff;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    transform: translateY(-1px);
+}
+
+.main-navigation a:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
+}
+
+.nav-welcome {
+    padding: 8px 10px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   6. MAIN CONTENT
+   ============================================================ */
+
+.site-main {
+    min-height: calc(100vh - 150px);
+    padding: 45px 0 60px;
+}
+
+
+/* ============================================================
+   7. HERO SECTION
+   ============================================================ */
+
+.hero {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: clamp(45px, 8vw, 90px) clamp(25px, 6vw, 70px);
+
+    margin-bottom: 45px;
+
+    border-radius: var(--radius-large);
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9f0f2,
+            #eef7f5
+        );
+
+    border: 1px solid #d1e7e9;
+
+    box-shadow: var(--shadow-medium);
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    right: -80px;
+    bottom: -100px;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    background: rgba(244, 162, 97, 0.18);
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
+
+    max-width: 760px;
+
+    color: var(--primary-dark);
+}
+
+.hero p {
+    position: relative;
+    z-index: 1;
+
+    max-width: 720px;
+
+    color: #425466;
+
+    font-size: 1.1rem;
+}
+
+
+/* ============================================================
+   8. BUTTONS
+   ============================================================ */
+
+.button,
+.form-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 10px 18px;
+
+    border: 0;
+    border-radius: var(--radius-small);
+
+    background: var(--primary);
+    color: #ffffff;
+
+    font-weight: 700;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.button:hover,
+.form-button:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 14px rgba(15, 76, 92, 0.2);
+}
+
+.button:focus-visible,
+.form-button:focus-visible {
+    outline: 3px solid var(--secondary);
+    outline-offset: 2px;
+}
+
+.button-secondary {
+    background: var(--secondary);
+    color: #17202a;
+}
+
+.button-secondary:hover {
+    background: var(--secondary-dark);
+    color: #ffffff;
+}
+
+.button-danger {
+    background: #b42318;
+}
+
+.button-danger:hover {
+    background: #8f1d14;
+}
+
+
+/* ============================================================
+   9. SECTION HEADINGS
+   ============================================================ */
+
+.section-heading {
+    margin-bottom: 24px;
+}
+
+.section-heading p {
+    color: var(--text-light);
+    max-width: 760px;
+}
+
+
+/* ============================================================
+   10. GRID SYSTEM
+   ============================================================ */
+
+.package-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 24px;
+}
+
+
+/* ============================================================
+   11. PACKAGE CARDS
+   ============================================================ */
+
+.package-card {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-medium);
+}
+
+.package-card-image {
+    width: 100%;
+    height: 210px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: var(--surface-soft);
+}
+
+.package-card-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 22px;
+}
+
+.package-card-content h2,
+.package-card-content h3 {
+    margin-top: 0;
+}
+
+.package-card-content > .button {
+    align-self: flex-start;
+
+    margin-top: auto;
+}
+
+.package-price {
+    color: var(--secondary-dark);
+
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   12. SEARCH AREA
+   ============================================================ */
+
+.search-box {
+    margin-bottom: 35px;
+
+    padding: 25px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.search-box h2 {
+    margin-bottom: 18px;
+}
+
+.search-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(190px, 1fr)
+        );
+
+    gap: 18px;
+
+    align-items: end;
+}
+
+
+/* ============================================================
+   13. FORMS
+   ============================================================ */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+
+    color: var(--primary-dark);
+
+    font-weight: 700;
+}
+
+.form-group small {
+    margin-top: 5px;
+
+    color: var(--text-light);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: var(--radius-small);
+
+    background: #ffffff;
+    color: var(--text);
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #94a3b8;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(42, 157, 143, 0.15);
+}
+
+
+/* Invalid browser validation */
+
+.form-group input:invalid:not(:placeholder-shown),
+.form-group select:invalid,
+.form-group textarea:invalid:not(:placeholder-shown) {
+    border-color: #dc2626;
+}
+
+
+/* ============================================================
+   14. ALERTS / MESSAGES
+   ============================================================ */
+
+.alert {
+    padding: 16px 18px;
+
+    margin-bottom: 24px;
+
+    border-radius: var(--radius-small);
+
+    border: 1px solid transparent;
+}
+
+.alert h2,
+.alert h3 {
+    margin-top: 0;
+}
+
+.alert p:last-child {
+    margin-bottom: 0;
+}
+
+.alert ul {
+    margin-bottom: 0;
+}
+
+.alert-error {
+    background: var(--error-background);
+    border-color: #fecaca;
+
+    color: var(--error);
+}
+
+.alert-success {
+    background: var(--success-background);
+    border-color: #bbf7d0;
+
+    color: var(--success);
+}
+
+.alert-warning {
+    background: var(--warning-background);
+    border-color: #fde68a;
+
+    color: var(--warning);
+}
+
+
+/* ============================================================
+   15. PACKAGE DETAILS
+   ============================================================ */
+
+.package-details {
+    padding: clamp(22px, 5vw, 38px);
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.package-details-image {
+    width: 100%;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin-bottom: 28px;
+
+    border-radius: var(--radius-medium);
+}
+
+.package-meta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(160px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin: 28px 0;
+}
+
+.meta-item {
+    padding: 18px;
+
+    background: var(--surface-soft);
+
+    border: 1px solid #d9e9ea;
+
+    border-radius: var(--radius-small);
+}
+
+.meta-item h3 {
+    margin-top: 0;
+}
+
+.activities-list {
+    padding-left: 22px;
+}
+
+.activities-list li {
+    margin-bottom: 7px;
+}
+
+
+/* ============================================================
+   16. EMPTY STATES
+   ============================================================ */
+
+.empty-state {
+    padding: 40px 25px;
+
+    background: var(--surface);
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: var(--radius-medium);
+
+    text-align: center;
+}
+
+.empty-state h2,
+.empty-state h3 {
+    margin-top: 0;
+}
+
+
+/* ============================================================
+   17. DASHBOARD COMPONENTS
+   ============================================================ */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+.dashboard-card {
+    padding: 24px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.dashboard-card h3 {
+    margin-top: 0;
+
+    color: var(--text-light);
+
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.dashboard-number {
+    margin: 0;
+
+    color: var(--primary);
+
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   18. TABLES
+   ============================================================ */
+
+.table-wrapper {
+    overflow-x: auto;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.data-table {
+    width: 100%;
+
+    min-width: 700px;
+
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 13px 15px;
+
+    border-bottom: 1px solid var(--border);
+
+    text-align: left;
+
+    vertical-align: top;
+}
+
+.data-table th {
+    background: var(--surface-soft);
+
+    color: var(--primary-dark);
+
+    font-size: 0.9rem;
+}
+
+.data-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* ============================================================
+   19. STATUS BADGES
+   ============================================================ */
+
+.status-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-confirmed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-inactive {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+
+/* ============================================================
+   20. HORIZONTAL RULE
+   ============================================================ */
+
+hr {
+    margin: 28px 0;
+
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+
+/* ============================================================
+   21. HOME FEATURE CARDS
+   ============================================================ */
+
+.feature-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 25px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    box-shadow: var(--shadow-small);
+}
+
+.feature-card h3 {
+    margin-top: 0;
+}
+
+
+/* ============================================================
+   22. FOOTER
+   ============================================================ */
+
+.site-footer {
+    margin-top: 30px;
+
+    padding: 30px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            #062c36
+        );
+
+    color: #dcebef;
+}
+
+.site-footer .container {
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+
+/* ============================================================
+   23. UTILITY CLASSES
+   ============================================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-light);
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   24. RESPONSIVE DESIGN
+   ============================================================ */
+
+
+/*
+ * Tablets
+ */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        position: static;
+    }
+
+    .site-header .container {
+        padding: 15px 0;
+
+        align-items: flex-start;
+    }
+
+    .main-navigation {
+        justify-content: flex-start;
+    }
+
+    .site-main {
+        padding-top: 35px;
+    }
+
+}
+
+
+/*
+ * Mobile devices
+ */
+
+@media (max-width: 700px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    .site-header .container {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .brand {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .main-navigation {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .main-navigation a {
+        min-height: 38px;
+
+        padding: 7px 10px;
+
+        font-size: 0.9rem;
+    }
+
+    .nav-welcome {
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .site-main {
+        padding: 30px 0 45px;
+    }
+
+    .hero {
+        padding: 38px 22px;
+        margin-bottom: 30px;
+    }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .package-details {
+        padding: 20px;
+    }
+
+    .package-card-image {
+        height: 220px;
+    }
+
+}
+
+
+/*
+ * Very small screens
+ */
+
+@media (max-width: 420px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .main-navigation {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        width: 100%;
+    }
+
+    .main-navigation a {
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 30px 18px;
+    }
+
+    .button,
+    .form-button {
+        width: 100%;
+    }
+
+}
