@@ -14,12 +14,10 @@ $errors = [];
 
 $email = '';
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
-
 
     /*
      * Validate email.
@@ -40,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'Email address is too long.';
     }
 
-
     /*
      * Validate password.
      */
@@ -49,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] =
             'Password is required.';
     }
-
 
     if (empty($errors)) {
 
@@ -76,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             $user = $statement->fetch();
-
 
             /*
              * Verify password against stored hash.
@@ -106,7 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['role'] =
                     $user['role'];
 
-
                 /*
                  * Redirect according to role.
                  */
@@ -120,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         break;
 
-
                     case 'staff':
 
                         header(
@@ -129,7 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         break;
 
-
                     case 'admin':
 
                         header(
@@ -137,7 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         );
 
                         break;
-
 
                     default:
 
@@ -156,8 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
 
                 /*
-                 * Use a generic message rather than revealing whether
-                 * the email exists in the system.
+                 * Generic message for security.
                  */
                 $errors[] =
                     'Invalid email address or password.';
@@ -177,93 +167,167 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-
 $pageTitle = 'Login - GlobeTrek Adventures';
 
 require_once '../includes/header.php';
 
 ?>
 
-<h1>GlobeTrek Adventures Login</h1>
+<section class="auth-page">
+
+    <div class="auth-layout">
+
+        <!-- Left visual panel -->
+        <aside class="auth-visual">
+
+            <img
+                src="/globetrek/assets/images/kandy-cultural.jpg"
+                alt="Sri Lankan travel destination"
+                class="auth-visual-image"
+            >
+
+            <div class="auth-visual-overlay"></div>
+
+            <div class="auth-visual-content">
+
+                <p class="auth-eyebrow">
+                    EXPLORE SRI LANKA
+                </p>
+
+                <h1>
+                    Your next adventure starts here.
+                </h1>
+
+                <p>
+                    Discover unforgettable destinations,
+                    curated travel packages and experiences
+                    across Sri Lanka with GlobeTrek Adventures.
+                </p>
+
+            </div>
+
+        </aside>
 
 
-<?php if (!empty($errors)): ?>
+        <!-- Login panel -->
+        <section class="auth-panel">
 
-    <div class="alert alert-error">
+            <div class="auth-panel-inner">
 
-        <h2>Login Error</h2>
+                <p class="auth-eyebrow auth-eyebrow-dark">
+                    WELCOME BACK
+                </p>
 
-        <ul>
+                <h2>
+                    Sign in to GlobeTrek
+                </h2>
 
-            <?php foreach ($errors as $error): ?>
+                <p class="auth-intro">
+                    Access your bookings, profile and travel plans.
+                </p>
 
-                <li>
-                    <?= htmlspecialchars($error) ?>
-                </li>
 
-            <?php endforeach; ?>
+                <?php if (!empty($errors)): ?>
 
-        </ul>
+                    <div class="alert alert-error auth-alert">
+
+                        <h3>
+                            Login Error
+                        </h3>
+
+                        <ul>
+
+                            <?php foreach ($errors as $error): ?>
+
+                                <li>
+                                    <?= htmlspecialchars($error) ?>
+                                </li>
+
+                            <?php endforeach; ?>
+
+                        </ul>
+
+                    </div>
+
+                <?php endif; ?>
+
+
+                <form
+                    method="POST"
+                    action="login.php"
+                    class="auth-form"
+                >
+
+                    <?= csrfField() ?>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            maxlength="150"
+                            required
+                            autocomplete="email"
+                            value="<?= htmlspecialchars($email) ?>"
+                            placeholder="you@example.com"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="form-button auth-submit"
+                    >
+                        Sign In
+                    </button>
+
+                </form>
+
+
+                <div class="auth-footer-text">
+
+                    <span>
+                        Don't have an account?
+                    </span>
+
+                    <a href="register.php">
+                        Create an account
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
 
     </div>
 
-<?php endif; ?>
-
-
-<form method="POST" action="login.php">
-
-    <?= csrfField() ?>
-
-    <div class="form-group">
-
-        <label for="email">
-            Email Address
-        </label>
-
-        <input
-            type="email"
-            id="email"
-            name="email"
-            maxlength="150"
-            required
-            value="<?= htmlspecialchars($email) ?>"
-        >
-
-    </div>
-
-
-    <div class="form-group">
-
-        <label for="password">
-            Password
-        </label>
-
-        <input
-            type="password"
-            id="password"
-            name="password"
-            required
-        >
-
-    </div>
-
-
-    <button
-        type="submit"
-        class="form-button"
-    >
-        Login
-    </button>
-
-</form>
-
-
-<p>
-    Don't have an account?
-    <a href="register.php">
-        Create an account
-    </a>
-</p>
+</section>
 
 
 <?php
