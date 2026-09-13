@@ -11,6 +11,7 @@ GlobeTrek Adventures is a dynamic travel and tourism web application developed f
 - CSS3
 - Vanilla JavaScript
 - XAMPP
+- PHP Sessions
 
 ## User Roles
 
@@ -21,9 +22,9 @@ GlobeTrek Adventures is a dynamic travel and tourism web application developed f
 - View package details
 - Make bookings
 - Make simulated payments
-- View bookings
-- Submit customer queries
+- View and manage bookings
 - Edit profile
+- Submit customer queries
 
 ### Staff
 - Staff dashboard
@@ -36,14 +37,26 @@ GlobeTrek Adventures is a dynamic travel and tourism web application developed f
 - Administrator dashboard
 - Manage staff accounts
 - Oversee bookings
+- Manage booking status
 - Generate sales and customer reports
+
+## Security
+
+- Session-based authentication
+- Role-based access control
+- Password hashing and verification
+- PDO prepared statements
+- CSRF protection for protected forms
+- Server-side validation
+- Safe output using `htmlspecialchars()`
+- Error logging and handling
 
 ## Local Setup
 
 1. Install XAMPP.
 2. Start Apache and MySQL.
 3. Create the `globetrek` MySQL database.
-4. Import the project database/schema.
+4. Import `globetrek.sql`.
 5. Copy:
 
    `config/db.example.php`
@@ -60,6 +73,33 @@ GlobeTrek Adventures is a dynamic travel and tourism web application developed f
 8. Open:
 
    `http://localhost/globetrek/`
+
+## Database
+
+The project includes the following tables:
+
+- `users`
+- `packages`
+- `accommodations`
+- `transportation`
+- `bookings`
+- `payments`
+- `queries`
+
+Sample development data is included in `globetrek.sql`.
+
+## UI
+
+The application uses custom CSS with:
+
+- CSS Grid
+- Flexbox
+- Responsive media queries
+- Reusable cards and forms
+- Status badges
+- Custom navigation and layouts
+
+No Bootstrap or other front-end CSS framework is used.
 
 ## Important
 
