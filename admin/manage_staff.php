@@ -730,21 +730,21 @@ require_once '../includes/header.php';
                             ) ?>
                         </p>
 
+                        <div class="staff-card-actions">
 
-                        <a
-                            href="manage_staff.php?edit=<?= (int) $staff['id'] ?>"
-                            class="button"
-                        >
-                            Edit
-                        </a>
+                            <a
+                                href="manage_staff.php?edit=<?= (int) $staff['id'] ?>"
+                                class="button"
+                            >
+                                Edit
+                            </a>
 
-
-                        <form
-                            method="POST"
-                            action="manage_staff.php"
-                            style="display:inline;"
-                            data-confirm="Are you sure you want to delete this staff account?"
-                        >
+                            <form
+                                method="POST"
+                                action="manage_staff.php"
+                                data-confirm="Are you sure you want to delete this staff account?"
+                            >
+                        
 
                             <?= csrfField() ?>
 
@@ -763,6 +763,8 @@ require_once '../includes/header.php';
                             </button>
 
                         </form>
+                        
+                        </div>
 
                     </div>
 

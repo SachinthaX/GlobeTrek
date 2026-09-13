@@ -2266,6 +2266,24 @@ h2 {
     color: var(--text-light);
 }
 
+.staff-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.staff-card-actions form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.staff-card-actions .button,
+.staff-card-actions .form-button {
+    min-width: 110px;
+}
+
 .management-grid,
 .support-grid {
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -2293,11 +2311,23 @@ h2 {
     min-width: 150px;
 }
 
-.management-grid .package-card-content > .button + form {
-    display: inline-flex;
-    margin-left: 8px;
-    padding-top: 0;
-    border-top: 0;
+
+.package-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.package-card-actions form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.package-card-actions .button,
+.package-card-actions .form-button {
+    min-width: 110px;
 }
 
 .support-grid .package-card-content h3 {

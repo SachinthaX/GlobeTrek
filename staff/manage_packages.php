@@ -1156,20 +1156,20 @@ require_once '../includes/header.php';
                         </p>
 
 
-                        <a
-                            href="manage_packages.php?edit=<?= (int) $package['id'] ?>"
-                            class="button"
-                        >
-                            Edit
-                        </a>
+                        <div class="package-card-actions">
 
+                            <a
+                                href="manage_packages.php?edit=<?= (int) $package['id'] ?>"
+                                class="button"
+                            >
+                                Edit
+                            </a>
 
-                        <form
-                            method="POST"
-                            action="manage_packages.php"
-                            style="display:inline;"
-                            data-confirm="Are you sure you want to delete this package?"
-                        >
+                            <form
+                                method="POST"
+                                action="manage_packages.php"
+                                data-confirm="Are you sure you want to delete this package?"
+                            >
 
                             <?= csrfField() ?>
 
@@ -1188,6 +1188,7 @@ require_once '../includes/header.php';
                             </button>
 
                         </form>
+                        </div>
 
                     </div>
 
